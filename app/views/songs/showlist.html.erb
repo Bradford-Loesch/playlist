@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Makeaplaylist</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="/songs">Dashboard</a>
+      <a href="/main/logout">Log Out</a>
+    </div>
+    <h3><%= @user.first_name %> <%= @user.last_name %>'s Playlist</h3>
+    <table>
+      <thead>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>No. of times song added</th>
+      </thead>
+      <% if @lists %>
+        <% @lists.each do |list| %>
+          <tr>
+            <td><%= list.song.artist %></td>
+            <td><%= list.song.title %></td>
+            <td><%= list.added %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </body>
+</html>

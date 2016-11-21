@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Makeaplaylist</title>
+  </head>
+  <body>
+    <div class="header">
+      <p><a href="/users/<%= @user.id %>">My playlist</a> <a href="/main/logout">Log Out</a></p>
+      <h2>Hello, <%= @user.first_name %> <%= @user.last_name %>!</h2>
+    </div>
+    <div class="main">
+      <h3>All the songs in our archive</h3>
+      <table>
+        <thead>
+          <th>Artist</th>
+          <th>Title</th>
+          <th>No. of times song added</th>
+          <th>Add to Your Playlist</th>
+        </thead>
+        <% if @songs %>
+          <% @songs.each do |song| %>
+            <tr>
+              <td><%= song.artist %></td>
+              <td><a href="/songs/<%= song.id %>"><%= song.title %></a></td>
+              <td><%= song.added %></td>
+              <td><a href="/songs/<%= song.id %>/add"><button type="button" name="addsong">Add</button></a></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
+      <h4>Add New Song</h4>
+      <form class="newsong" action="/songs" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+        <label for="song[artist]">Artist: <input type="text" name="song[artist]" value=""></label><br>
+        <label for="song[title]">Title: <input type="text" name="song[title]" value=""></label><br>
+        <input type="submit" name="submit" value="Add Song">
+      </form>
+    </div>
+  </body>
+</html>

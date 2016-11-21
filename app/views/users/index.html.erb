@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Makeaplaylist</title>
+  </head>
+  <body>
+    <form class="loginuser" action="/main/login" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+      <label for="email">Email: <input type="text" name="email" value=""></label><br>
+      <label for="password">Password: <input type="password" name="password" value=""></label><br>
+      <input type="submit" name="submit" value="Log In">
+    </form>
+
+    <form class="newuser" action="/main" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+      <label for="user[first_name]">First Name: <input type="text" name="user[first_name]" value=""></label><br>
+      <label for="user[last_name]">Last Name: <input type="text" name="user[last_name]" value=""></label><br>
+      <label for="user[email]">Email: <input type="text" name="user[email]" value=""></label><br>
+      <label for="user[password]">Password: <input type="password" name="user[password]" value=""></label><br>
+      <label for="user[password_confirmation]">Password Confirmation: <input type="password" name="user[password_confirmation]" value=""></label><br>
+      <input type="submit" name="submit" value="Register">
+    </form>
+  </body>
+</html>
